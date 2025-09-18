@@ -1,5 +1,4 @@
 (() => {
-    // Crear una ventana flotante
     const container = document.createElement("div");
     container.style.position = "fixed";
     container.style.top = "10px";
@@ -52,7 +51,6 @@
     document.addEventListener("touchmove", doDrag);
     document.addEventListener("touchend", stopDrag);
 
-    // Encabezado con logo, título y botones
     const header = document.createElement("div");
     header.style.display = "flex";
     header.style.alignItems = "center";
@@ -63,13 +61,11 @@
     header.style.padding = "5px";
     header.style.borderRadius = "5px";
 
-    // Contenedor de logo y título
     const titleContainer = document.createElement("div");
     titleContainer.style.display = "flex";
     titleContainer.style.alignItems = "center";
     titleContainer.style.gap = "10px"; 
 
-    // Logo cuadrado
     const logo = document.createElement("img");
     logo.src = "https://i.blogs.es/d225d6/skibidi-toilet-wiki/650_1200.jpeg";
     logo.style.width = "30px";
@@ -77,7 +73,6 @@
     logo.style.borderRadius = "5px";
     titleContainer.appendChild(logo);
 
-    // Título
     const title = document.createElement("div");
     title.innerText = "Pulgax Executor";
     title.style.fontWeight = "bold";
@@ -86,7 +81,6 @@
 
     header.appendChild(titleContainer);
 
-    // Contenedor de botones minimizar y cerrar
     const buttonContainer = document.createElement("div");
     buttonContainer.style.display = "flex";
     buttonContainer.style.gap = "5px";
@@ -108,7 +102,6 @@
         return button;
     };
 
-    // Botón para minimizar con animación
     const minimizeButton = createButton("−", () => {
         if (container.style.height === "40px") {
             container.style.height = "300px";
@@ -128,7 +121,6 @@
     });
     buttonContainer.appendChild(minimizeButton);
 
-    // Botón para cerrar la ventana
     const closeButton = createButton("X", () => {
         document.body.removeChild(container);
     });
@@ -137,7 +129,6 @@
     header.appendChild(buttonContainer);
     container.appendChild(header);
 
-    // Crear un área de texto más grande
     const textarea = document.createElement("textarea");
     textarea.style.width = "100%";
     textarea.style.height = "180px";
@@ -151,13 +142,11 @@
     textarea.placeholder = "Escribe código JavaScript aquí...";
     container.appendChild(textarea);
 
-    // Contenedor de botones de ejecución y limpieza
     const actionButtons = document.createElement("div");
     actionButtons.style.display = "flex";
     actionButtons.style.justifyContent = "space-between";
     actionButtons.style.marginTop = "10px";
 
-    // Botón para ejecutar código
     const executeButton = createButton("Ejecutar", () => {
         try {
             const result = eval(textarea.value);
@@ -170,7 +159,6 @@
     executeButton.style.fontSize = "14px";
     actionButtons.appendChild(executeButton);
 
-    // Botón para limpiar el código
     const clearButton = createButton("Limpiar", () => {
         textarea.value = "";
     });
@@ -180,6 +168,5 @@
 
     container.appendChild(actionButtons);
 
-    // Agregar la ventana flotante al cuerpo del documento
     document.body.appendChild(container);
 })();
